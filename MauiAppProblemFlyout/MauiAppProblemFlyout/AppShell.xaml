@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MauiAppProblemFlyout.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MauiAppProblemFlyout"
+    Shell.FlyoutBehavior="Flyout"
+    Title="MauiAppProblemFlyout"
+    x:DataType="local:AppShell">
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+
+
+    <FlyoutItem Route="main" 
+                Title="Applications" 
+                FlyoutDisplayOptions="AsMultipleItems"
+                Shell.FlyoutItemIsVisible="{Binding Authentication.IsLoggedOn}"
+                x:Name="flyoutmain"
+                >
+        <ShellContent
+            Title="Applications"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="home" />
+    </FlyoutItem>
+
+    <FlyoutItem Route="settings" Title="Settings...">
+        <ShellContent
+                Title="Settings"
+            ContentTemplate="{DataTemplate local:MainPage}"
+                Route="settingspage" />
+    </FlyoutItem>
+
+</Shell>
